@@ -45,7 +45,7 @@ module.exports = {
 			path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`),
 		}),
 		new HtmlWebpackPlugin({
-			title: "Components",
+			title: "Title",
 			template: path.join(__dirname, "public", "index.html"),
 		}),
 		new BundleAnalyzerPlugin(),
