@@ -13,7 +13,7 @@ module.exports = {
 	entry: path.resolve(__dirname, "src", "index.js"),
 	output: {
 		clean: true,
-		assetModuleFilename: "[name][ext]",
+		assetModuleFilename: "images/[name][ext][query]",
 		filename: "bundle.[contenthash].js",
 		path: path.resolve(__dirname, "dist"),
 	},
@@ -43,9 +43,19 @@ module.exports = {
 				},
 			},
 			{
+				test: /\.(png|jpe?g|gif|svg)$/i,
+				// Automatically determines if the asset is inline or resource
+				type: "asset",
+			},
+			{
 				test: /\.(s[ac]|c)ss$/i,
 				use: [
-					MiniExtractCssPlugin.loader,
+					{
+						loader: MiniExtractCssPlugin.loader,
+						options: {
+							publicPath: "",
+						},
+					},
 					"css-loader",
 					"postcss-loader",
 					"sass-loader",
