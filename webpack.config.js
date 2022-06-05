@@ -3,9 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
 	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-module.exports = {
+const Dotenv = require("dotenv-webpack");
+
+const mode = process.env.NODE_ENV;
+
+module.exports = (env) => ({
+	mode,
 	target: "web",
-	mode: "development",
 	entry: path.resolve(__dirname, "src", "index.js"),
 	output: {
 		clean: true,
@@ -15,14 +19,6 @@ module.exports = {
 	},
 	devtool: "source-map",
 	devServer: {
-		// https: true,
-		// Backend proxy
-		// proxy: {
-		// 	"/api": {
-		// 		target: "http://localhost:3000",
-		// 		pathRewrite: { "^/api": "" },
-		// 	},
-		// },
 		hot: true,
 		open: {
 			app: {
@@ -47,10 +43,13 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new Dotenv({
+			path: path.resolve(__dirname, `.env.${env}`),
+		}),
 		new HtmlWebpackPlugin({
 			title: "Components",
 			template: path.join(__dirname, "public", "index.html"),
 		}),
 		new BundleAnalyzerPlugin(),
 	],
-};
+});
