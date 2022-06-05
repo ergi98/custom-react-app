@@ -42,7 +42,7 @@ module.exports = {
 		],
 		rules: [
 			{
-				test: /\.s?css$/i,
+				test: /\.(s[ac]|c)ss$/i,
 				use: [
 					MiniExtractCssPlugin.loader,
 					"css-loader",
