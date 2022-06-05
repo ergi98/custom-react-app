@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ergi98/Components.git"
+		"url": "git+https://github.com/ergi98/custom-react-app.git"
 	},
 	"author": "Ergi Dervishaj",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/ergi98/Components/issues"
+		"url": "https://github.com/ergi98/custom-react-app/issues"
 	},
-	"homepage": "https://github.com/ergi98/Components#readme",
+	"homepage": "https://github.com/ergi98/custom-react-app#readme",
 	"devDependencies": {
 		"@babel/cli": "^7.17.10",
 		"@babel/core": "^7.18.2",
