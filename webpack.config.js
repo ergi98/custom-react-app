@@ -1,9 +1,10 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
 	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-const Dotenv = require("dotenv-webpack");
+const MiniExtractCssPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	target: "web",
@@ -39,6 +40,17 @@ module.exports = {
 				use: "babel-loader",
 			},
 		],
+		rules: [
+			{
+				test: /\.s?css$/i,
+				use: [
+					MiniExtractCssPlugin.loader,
+					"css-loader",
+					"postcss-loader",
+					"sass-loader",
+				],
+			},
+		],
 	},
 	plugins: [
 		new Dotenv({
@@ -49,5 +61,6 @@ module.exports = {
 			template: path.join(__dirname, "public", "index.html"),
 		}),
 		new BundleAnalyzerPlugin(),
+		new MiniExtractCssPlugin(),
 	],
 };
