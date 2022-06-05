@@ -5,11 +5,9 @@ const BundleAnalyzerPlugin =
 
 const Dotenv = require("dotenv-webpack");
 
-const mode = process.env.NODE_ENV;
-
-module.exports = (env) => ({
-	mode,
+module.exports = {
 	target: "web",
+	mode: process.env.NODE_ENV,
 	entry: path.resolve(__dirname, "src", "index.js"),
 	output: {
 		clean: true,
@@ -44,7 +42,7 @@ module.exports = (env) => ({
 	},
 	plugins: [
 		new Dotenv({
-			path: path.resolve(__dirname, `.env.${env}`),
+			path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`),
 		}),
 		new HtmlWebpackPlugin({
 			title: "Components",
@@ -52,4 +50,4 @@ module.exports = (env) => ({
 		}),
 		new BundleAnalyzerPlugin(),
 	],
-});
+};
