@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin =
 
 const MiniExtractCssPlugin = require("mini-css-extract-plugin");
 
+console.log(path.resolve(__dirname, "src", "index.js"));
 module.exports = {
 	target: "web",
 	mode: process.env.NODE_ENV,
@@ -35,12 +36,12 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: "babel-loader",
+				use: {
+					loader: "babel-loader",
+				},
 			},
-		],
-		rules: [
 			{
 				test: /\.(s[ac]|c)ss$/i,
 				use: [
@@ -60,7 +61,7 @@ module.exports = {
 			title: "Title",
 			template: path.join(__dirname, "public", "index.html"),
 		}),
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
 		new MiniExtractCssPlugin(),
 	],
 };
