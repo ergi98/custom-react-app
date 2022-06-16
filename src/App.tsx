@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./index.css";
 
 const message = "Hey";
 
@@ -9,7 +10,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Welcome to React App</h1>
+      <h1 className="text-lg text-red-500">Welcome to React App</h1>
     </div>
   );
 };
