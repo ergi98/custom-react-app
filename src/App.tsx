@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const message: string = "Hey";
+const message = "Hey";
 
 const App = () => {
   useEffect(() => {

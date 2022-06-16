@@ -77,5 +77,5 @@ module.exports = {
     new MiniExtractCssPlugin(),
     process.env.NODE_ENV === "production" && new BundleAnalyzerPlugin(),
     process.env.NODE_ENV === "development" && new ReactRefreshWebpackPlugin(),
-  ],
+  ].filter(Boolean),
 };
