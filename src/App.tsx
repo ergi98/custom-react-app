@@ -4,7 +4,7 @@ const message = "Hey";
 
 const App = () => {
   useEffect(() => {
-  console.log(message);
+console.log(message);
   }, []);
 
   return (
