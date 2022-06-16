@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./index.css";
+import "@src/index.css";
 
 const message = "Hey";
 

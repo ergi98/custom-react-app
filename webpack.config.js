@@ -8,7 +8,8 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 
 const MiniExtractCssPlugin = require("mini-css-extract-plugin");
 
-console.log(path.resolve(__dirname, "src", "index.js"));
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+
 module.exports = {
   target: "web",
   mode: process.env.NODE_ENV,
@@ -34,6 +35,11 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json"],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "tsconfig.json"),
+      }),
+    ],
   },
   module: {
     rules: [
